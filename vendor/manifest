@@ -1,0 +1,51 @@
+{
+	"version": 0,
+	"dependencies": [
+		{
+			"importpath": "github.com/BurntSushi/freetype-go/freetype",
+			"repository": "https://github.com/BurntSushi/freetype-go",
+			"revision": "b763ddbfe298bf71c999a2833470da508f3a0677",
+			"branch": "master",
+			"path": "/freetype"
+		},
+		{
+			"importpath": "github.com/BurntSushi/graphics-go/graphics",
+			"repository": "https://github.com/BurntSushi/graphics-go",
+			"revision": "b43f31a4a96688fba0b612e25e22648b9267e498",
+			"branch": "master",
+			"path": "/graphics"
+		},
+		{
+			"importpath": "github.com/BurntSushi/xgb",
+			"repository": "https://github.com/BurntSushi/xgb",
+			"revision": "27f122750802c950b2c869a5b63dafcf590ced95",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/BurntSushi/xgbutil",
+			"repository": "https://github.com/BurntSushi/xgbutil",
+			"revision": "f7c97cef3b4e6c88280a5a7091c3314e815ca243",
+			"branch": "master"
+		},
+		{
+			"importpath": "github.com/disintegration/imaging",
+			"repository": "https://github.com/disintegration/imaging",
+			"revision": "ac27d1805a555e1754fa177216ee07f4e63c30b5",
+			"branch": "master"
+		},
+		{
+			"importpath": "golang.org/x/image/bmp",
+			"repository": "https://go.googlesource.com/image",
+			"revision": "426cfd8eeb6e08ab1932954e09e3c2cb2bc6e36d",
+			"branch": "master",
+			"path": "/bmp"
+		},
+		{
+			"importpath": "golang.org/x/image/tiff",
+			"repository": "https://go.googlesource.com/image",
+			"revision": "426cfd8eeb6e08ab1932954e09e3c2cb2bc6e36d",
+			"branch": "master",
+			"path": "/tiff"
+		}
+	]
+}
