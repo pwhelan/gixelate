@@ -14,6 +14,8 @@ import (
 
 	"github.com/disintegration/imaging"
 
+	"github.com/oliamb/cutter"
+
 	"os/exec"
 )
 
@@ -48,26 +50,29 @@ func main() {
 			continue
 		}
 
-		wimg := imaging.Crop(ximg, image.Rectangle{
-			Min: image.Point{X: dgeom.X(), Y: dgeom.Y()},
-			Max: image.Point{X: dgeom.X() + dgeom.Width(), Y: dgeom.Y() + dgeom.Height()},
+		// Use cutter.Crop since imaging.Crop is painfully slow.
+		wimg, _ := cutter.Crop(ximg, cutter.Config{
+			Mode:   cutter.TopLeft,
+			Anchor: image.Point{X: dgeom.X(), Y: dgeom.Y()},
+			Width:  dgeom.Width(),
+			Height: dgeom.Height(),
 		})
-		wimg = imaging.Resize(wimg, dgeom.Width()/6, dgeom.Height()/6, imaging.NearestNeighbor)
+
+		wimg = imaging.Resize(wimg, dgeom.Width()/9, dgeom.Height()/9, imaging.NearestNeighbor)
 		wimg = imaging.Resize(wimg, dgeom.Width(), dgeom.Height(), imaging.Linear)
 
 		oimg = imaging.Paste(oimg, wimg, image.Pt(dgeom.X(), dgeom.Y()))
-
 		log.Printf("processed %d", clientid)
 	}
 
-	oimg = imaging.Blur(oimg, 0.5)
-	oimg = imaging.Sharpen(oimg, 0.5)
-	oimg = imaging.AdjustBrightness(oimg, -2)
+	oimg = imaging.Blur(oimg, 0.25)
+	oimg = imaging.Sharpen(oimg, 0.75)
+	oimg = imaging.AdjustBrightness(oimg, 0.5)
 
 	log.Printf("saving screen ...")
-	imaging.Save(oimg, "/tmp/screen.jpg")
+	imaging.Save(oimg, "/tmp/screen.png")
 	log.Printf("saved!")
 
-	cmd := exec.Command("i3lock", "-i", "/tmp/screen.jpg")
+	cmd := exec.Command("i3lock", "-i", "/tmp/screen.png")
 	cmd.Run()
 }

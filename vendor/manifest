@@ -34,6 +34,12 @@
 			"branch": "master"
 		},
 		{
+			"importpath": "github.com/oliamb/cutter",
+			"repository": "https://github.com/oliamb/cutter",
+			"revision": "6bb26911f52436bb5c63667f9aaa2d1826b2df9e",
+			"branch": "master"
+		},
+		{
 			"importpath": "golang.org/x/image/bmp",
 			"repository": "https://go.googlesource.com/image",
 			"revision": "426cfd8eeb6e08ab1932954e09e3c2cb2bc6e36d",
