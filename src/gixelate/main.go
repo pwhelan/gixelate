@@ -50,6 +50,15 @@ func main() {
 			continue
 		}
 
+		attr, err := xproto.GetWindowAttributes(X.Conn(), clientid).Reply()
+		if err != nil {
+			log.Printf("ERROR: %s", err)
+			continue
+		}
+		if attr.MapState != xproto.MapStateViewable {
+			continue
+		}
+
 		// Use cutter.Crop since imaging.Crop is painfully slow.
 		wimg, _ := cutter.Crop(ximg, cutter.Config{
 			Mode:   cutter.TopLeft,
